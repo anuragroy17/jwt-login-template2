@@ -1,4 +1,4 @@
-# jwt-integration - A Demo
+# JWT-Integration - A Demo
 JWT Intergration in Spring Boot and Angular 8 -
 
  - Added JWT token security (lasts one hour) on both frontend and backend
