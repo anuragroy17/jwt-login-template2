@@ -1,0 +1,67 @@
+<body class="auth-component">
+  <section class="user">
+    <div class="user_options-container">
+      <div class="user_options-text">
+        <div class="user_options-unregistered">
+          <h2 class="user_unregistered-title" style="font-weight: normal">Don't have an account?</h2>
+          <p class="user_unregistered-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis aliquid vero nesciunt? Ad, quo expedita.</p>
+          <button class="user_unregistered-signup" id="signup-button" (click)="changeClass()">Sign up</button>
+        </div>
+
+        <div class="user_options-registered">
+          <h2 class="user_registered-title" style="font-weight: normal">Have an account?</h2>
+          <p class="user_registered-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores, autem?</p>
+          <button class="user_registered-login" id="login-button" (click)="changeClass()">Login</button>
+        </div>
+      </div>
+
+      <div class="user_options-forms" id="user_options-forms" [ngClass]="status ? 'bounceLeft' : 'bounceRight'">
+        <div class="user_forms-login">
+          <h2 class="forms_title">Login</h2>
+          <form class="forms_form" #logInForm="ngForm" (ngSubmit)="onLogin(logInForm)">
+            <fieldset class="forms_fieldset">
+              <div class="forms_field">
+                <input type="text" id="userName1" ngModel name="username" placeholder="Username"
+                  class="forms_field-input" required autofocus />
+              </div>
+              <div class="forms_field">
+                <input type="password" id="passWord1" ngModel name="password" placeholder="Password"
+                  class="forms_field-input" required />
+              </div>
+            </fieldset>
+            <div class="forms_buttons">
+              <button type="button" class="forms_buttons-forgot">Forgot password?</button>
+              <input type="submit" value="Log In" class="forms_buttons-action" [disabled]="!logInForm.valid">
+            </div>
+          </form>
+        </div>
+        <div class="user_forms-signup">
+          <h2 class="forms_title">Sign Up</h2>
+          <form class="forms_form" #signUpForm="ngForm" (ngSubmit)="onSignUp(signUpForm)">
+            <fieldset class="forms_fieldset">
+              <div class="forms_field">
+                <input type="email" id="email" ngModel name="email" placeholder="Email" class="forms_field-input"
+                  required email />
+              </div>
+              <div class="forms_field">
+                <input type="text" id="fullName" ngModel name="fullName" placeholder="Full Name"
+                  class="forms_field-input" required />
+              </div>
+              <div class="forms_field">
+                <input type="text" id="userName2" ngModel name="username" placeholder="Username"
+                  class="forms_field-input" required />
+              </div>
+              <div class="forms_field">
+                <input type="password" id="passWord2" ngModel name="password" placeholder="Password" required
+                  minlength="6" class="forms_field-input" />
+              </div>
+            </fieldset>
+            <div class="forms_buttons">
+              <input type="submit" value="Sign up" class="forms_buttons-action" [disabled]="!signUpForm.valid">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
