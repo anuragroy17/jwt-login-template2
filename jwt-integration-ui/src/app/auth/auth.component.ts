@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NgForm, FormsModule } from "@angular/forms";
 import { AuthService } from "./auth.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: "app-auth",
@@ -11,7 +12,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class AuthComponent implements OnInit {
   status: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit() {
   }
@@ -29,9 +30,11 @@ export class AuthComponent implements OnInit {
 
     this.authService.signup(email, fullName, username, password).subscribe(
       resData => {
+        this.toastr.success("Sign Up", "Successfull");
         this.changeClass();
       },
       error => {
+        this.toastr.error("Error Occurred!")
         console.log(JSON.stringify(error));
       }
     );
@@ -49,9 +52,11 @@ export class AuthComponent implements OnInit {
 
     this.authService.login(username, password).subscribe(
       resData => {
-          this.router.navigate(["/"])
+        this.toastr.success("Login", "Successfull");
+        this.router.navigate(["/"])
       },
       error => {
+        this.toastr.error("Error Occurred!")
         console.log(JSON.stringify(error));
       }
     );

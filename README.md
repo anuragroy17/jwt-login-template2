@@ -8,7 +8,6 @@ Remaining Integrations -
 
  - Add validations to forms
  - Add error handling
- - Add toastr messages
  - Add function to "Forgot Password"
  
 # Screenshots
